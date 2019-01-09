@@ -12,10 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','PagesController@home');
-Route::get('/about','PagesController@about');
-Route::get('/contact ','PagesController@contact');
+// Route::get('/','PagesController@home');
+// Route::get('/about','PagesController@about');
+// Route::get('/contact ','PagesController@contact');
 
+Route::resource('projects','ProjectsController');
+
+// Route::get('/projects','ProjectsController@index');
+// Route::get('/projects/create','ProjectsController@create');
+// Route::get('/projects/{project}','ProjectsController@show');
+// Route::post('/projects','ProjectsController@store');
+// Route::get('/projects/{project}/edit','ProjectsController@edit');
+// Route::patch('/projects/{project}','ProjectsController@update');
+// Route::delete('/projects/{project}','ProjectsController@delete');
 
 // Route::get('/', function () {
 
@@ -40,11 +49,11 @@ Route::get('/contact ','PagesController@contact');
     // ]);
 
 
-Route::get('/contact', function () {
-    return view('contact');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
 

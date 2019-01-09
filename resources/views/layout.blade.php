@@ -1,18 +1,18 @@
 <html>
 <head>
-<title>@yield('title','Home') </title>
+<title></title>
 </head>
 <body>
 
+
+<div class="container">
 @yield('content')
 
-<ul>
 
-<li><a href="/">Home</a></li>
-<li><a href="/about">About Us</li>
-<li><a href="/contact">Contact us to learn more</a></li>
+</div>    
 
-</ul>
+
+
 </body>
 
 </html>
