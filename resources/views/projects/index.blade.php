@@ -8,8 +8,11 @@
 
 @foreach ($projects as $item)
 
+
+<a href="/projects/{{$item->id}}">
 <li>{{$item->title}}</li>
-    
+</a>
+
 @endforeach
 
     

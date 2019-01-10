@@ -18,7 +18,18 @@
 <textarea name="description">{{$project->description}}</textarea>
     <br><br>
     <input type="submit" value="Submit">
+ 
 </form>
+
+<form method="POST" action="/projects/{{$project->id}}">
+   {{ method_field('DELETE') }}
+   {{ csrf_field() }}
+      
+        <br><br>
+        <input type="submit" value="Delete Project">
+        
+     
+    </form>
 
 
 @endsection
