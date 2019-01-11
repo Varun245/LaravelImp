@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Filesystem\Filesystem;
+use phpDocumentor\Reflection\DocBlock\Tags\Example;
+// use App\Services\Twitter;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/','PagesController@home');
 // Route::get('/about','PagesController@about');
 // Route::get('/contact ','PagesController@contact');
+
+
+
 
 Route::resource('projects','ProjectsController');
 
@@ -52,10 +58,24 @@ Route::patch('/tasks/{task}','ProjectTasksController@update');
     //     'foo'=>request('title')
     // ]);
 
+    // app()->singleton('example',function(){
+    //     return new \App\Example;
+    // });  
+    
 
 Route::get('/', function () {
-    return view('welcome');
+
+    //dd(app(Filesystem::class));
+       //dd(app('App\Example'));
+    //dd($twitter);
+    
+     return view('welcome');
 });
+
+// app()->singleton('\App\Services\Twitter',function(){
+
+//     return new \App\Services\Twitter('sdfsdgso');
+// });
 
 // Route::get('/about', function () {
 //     return view('about');

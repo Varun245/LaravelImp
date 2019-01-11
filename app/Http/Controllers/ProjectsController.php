@@ -4,23 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use App\Services\Twitter;
 
 
 class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::where('owner_id',auth()->id())->get();
 
         //return $projects;
         return view('projects.index', compact('projects'));
     }
 
 
-    public function show(Project $project)
+    public function show(Project $project,Twitter $twitter)
     {
         // $project=Project::findorFail($id);
         //return $project;
+        $twitter=app('twitter');
+        dd('twitter');
         return view('projects.show', compact('project'));
     }
 
