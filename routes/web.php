@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Filesystem\Filesystem;
 use phpDocumentor\Reflection\DocBlock\Tags\Example;
+
 // use App\Services\Twitter;
 
 /*
@@ -20,6 +21,8 @@ use phpDocumentor\Reflection\DocBlock\Tags\Example;
 // Route::get('/contact ','PagesController@contact');
 
 
+
+//Route::resource('projects', 'ProjectsController')->middleware('can:update,project');//Can use this also prefer this
 
 
 Route::resource('projects','ProjectsController');
@@ -81,3 +84,7 @@ Route::get('/', function () {
 //     return view('about');
 // });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -5,13 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Services\Twitter;
+use Illuminate\Support\Facades\Gate;
 
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+        {
+            $this->middleware('auth');
+        }
+
+
     public function index()
     {
-        $projects = Project::where('owner_id',auth()->id())->get();
+       
+    //     $projects=Project::all();
+         $projects = Project::where('owner_id',auth()->id())->get();//select * from projects where ownerid=4
 
         //return $projects;
         return view('projects.index', compact('projects'));
@@ -22,9 +31,21 @@ class ProjectsController extends Controller
     {
         // $project=Project::findorFail($id);
         //return $project;
-        $twitter=app('twitter');
-        dd('twitter');
-        return view('projects.show', compact('project'));
+        // $twitter=app('twitter');
+        // dd('twitter');
+        // if($project->owner_id!==auth()->id())
+        // {
+        //     abort(403);
+        // }
+
+      $this->authorize('update',$project);//Use this
+
+     //   $projects=auth()->user()->projects;
+    //  abort_unless(\Gate::denies('update',$project)); //if gate debies upadate on given prooject
+          
+            return view('projects.show', compact('project'));
+
+        
     }
 
     public function edit(Project $project)
@@ -65,7 +86,9 @@ class ProjectsController extends Controller
         ]);
 
         //return $validated;
-        Project::create($validated);
+      //  dd(auth()->id);
+     // $validated['owner_id']=auth()->id;
+        Project::create($validated + ['owner_id'=>auth()->id()]);
 
 
     //    $project=new Project();
